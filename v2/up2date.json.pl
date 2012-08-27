@@ -69,7 +69,7 @@ Bigs fixed (tickets closed):
 86 - getFindings slow with workspaces with lots of findings
 
 ",
-"https://sourceforge.net/projects/seccubus/files/Seccubus_v2/Seccubus-2.0.beta4/",""];
+"https://github.com/schubergphilis/Seccubus_v2/downloads",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "You are using the trunk version ($version) of Seccubus",""];
 	} else {
