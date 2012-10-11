@@ -23,6 +23,9 @@ my $query = CGI::new();
 print $query->header("application/json");
 
 my $version = $query->param("version");
+my $r_version = $version;
+$version =~ s/\.B\d+//;
+
 if ( ! $version ) {
 	$data = [ "Error","No version specified", "http://seccubus.com"];
 } else {
@@ -34,7 +37,7 @@ if ( ! $version ) {
 	} elsif ( $version eq $cool ) {
 		$data = [ "NOK", "THIS VERSION IS BROKEN, download a newer version!",""];
 	} elsif ( $version eq $current ) {
-		$data = [ "OK", "Your version $version is up to date",""];
+		$data = [ "OK", "Your version $r_version is up to date",""];
 	} elsif ( $minor lt $two || ($minor eq $two && $revision lt $three) ) {
 		$data = [ "Error","Version $current is available, please upgrade...
 
@@ -71,7 +74,7 @@ Bigs fixed (tickets closed):
 ",
 "https://github.com/schubergphilis/Seccubus_v2/downloads",""];
 	} elsif ( $version eq $beta ) {
-		$data = ["OK", "You are using the trunk version ($version) of Seccubus",""];
+		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
 	} else {
 		$data = ["Error","Unrecognized version: $version, current is $current","http://seccubus.com"];
 	}
