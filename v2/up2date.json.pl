@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.0.beta5";
-my $beta = "2.0.beta6";
+my $current = "2.0.beta6";
+my $beta = "2.0.rc1";
 my $cool = "2.0.beta4";
 my ( $one, $two, $three) = split /\./, $current;
 my $data = [];
@@ -43,33 +43,31 @@ if ( ! $version ) {
 
 Release notes:
 
-15-8-2012 - 2.0.beta5
-=====================
-This is basically version 2.0.beta4 with a nasty critical error removed.
+11-10-2012 - 2.0.beta6 - The final Beta
+=======================================
 
 New features / Issues resolved
 ------------------------------
-Removed an error that caused the previous version to fail
+* Sourcecode repository is now
+[GitHub] (https://github.com/schubergphilis/Seccubus_v2/issues/6) in stead of
+SourceForge
+* Build is now automated using a Jenkins server at Schuberg Philis including
+  the creation of RPMs and Debian packages via OpenSuse build services
+* Fixed a few bugs
 
 Bigs fixed (tickets closed):
 ----------------------------
-91 - Scan_ids is a mandatory parameter
-
-10-6-2012 - 2.0.beta4
-=====================
-
-New features / Issues resolved
-------------------------------
-Fixed major performance issues
-Fixed installer bug
-
-Bigs fixed (tickets closed):
-----------------------------
-82 - Install.pl fails to write all necesary files
-83 - convert_v2_v2 does not work with default install directory from RPM (/var/lib/seccubus)
-84 - getWorkspaces slow with large database
-85 - getScans slow with large databases
-86 - getFindings slow with workspaces with lots of findings
+* #7  - Import error on scan results from OpenVAS 3.0.1
+* #7  - Error converting OpenVAS .nbe to IVIL
+* #11 - ConfigTest is more verbose when it fails due to a missing config file
+* #12 - Installation error with tarball
+* #15 - Ungroup Compliance Scans
+* #16 - More gracefull error handling when Nikto doesn't find a config
+* #17 - File ~/scanners/Nikto/scan has no execute permission
+* ##  - Fixed a broken symlink in the development environment
+* #23 - Nessus xmlRPC port can now be selected
+* #25 - Fixed tarball installation error
+* #29 - JMVC framework updated to version 3.2.2
 
 ",
 "https://github.com/schubergphilis/Seccubus_v2/downloads",""];
