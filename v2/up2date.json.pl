@@ -11,10 +11,11 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.0.beta6";
-my $beta = "2.0.rc1";
-my $cool = "2.0.beta4";
+my $current = "2.0";
+my $beta = "2.1.rc1";
+my $cool = "2.0.99";
 my ( $one, $two, $three) = split /\./, $current;
+$three = 'ZZZ' unless $three;
 my $data = [];
 my $json = JSON->new();
 
@@ -35,7 +36,7 @@ if ( ! $version ) {
 	if ($major < $one ) {
 		$data = [ "Error", "This check only supports version 2.x.x","" ] ;
 	} elsif ( $version eq $cool ) {
-		$data = [ "NOK", "THIS VERSION IS BROKEN, download a newer version!",""];
+		$data = [ "OK", "You are using the first non-beta version of Seccubus 2.0 released at the Alt-S conference on 22-1-2013",""];
 	} elsif ( $version eq $current ) {
 		$data = [ "OK", "Your version $r_version is up to date",""];
 	} elsif ( $minor lt $two || ($minor eq $two && $revision lt $three) ) {
@@ -43,32 +44,51 @@ if ( ! $version ) {
 
 Release notes:
 
-11-10-2012 - 2.0.beta6 - The final Beta
-=======================================
+Seccubus V2 Change Log
+======================
+Seccubus automates regular vulnerability scans with vrious tools and aids
+security people in the fast analysis of its output, both on the first scan and
+on repeated scans.
 
-New features / Issues resolved
-------------------------------
-* Sourcecode repository is now
-[GitHub] (https://github.com/schubergphilis/Seccubus_v2/issues/6) in stead of
-SourceForge
-* Build is now automated using a Jenkins server at Schuberg Philis including
-  the creation of RPMs and Debian packages via OpenSuse build services
-* Fixed a few bugs
+On repeated scan delta reporting ensures that findings only need to be judged
+when they first appear in the scan results or when their output changes.
+
+Seccubus 2.0 is marks the end of the beta phase for the 2.0 branch.
+This code is the only actively developed and maintained branch and all support
+for Seccubus V1 has officially been dropped.
+
+Seccubus V2 works with the following scanners:
+* Nessus 4.x and 5.x (professional and home feed)
+* OpenVAS
+* Nikto
+* NMap
+* SSLyze
+
+For more information visit [www.seccubus.com]
+
+22-01-2012 - 2.0 - The Alt-S version
+====================================
+
+Key new features / issues resolved
+----------------------------------
+* Email notifications when a scan starts and a scan ends
+* Scan create and edit dialog now display default parameters
+* do-scan now has a --no-delete option to preserve temporary files
+* SSLyze support
 
 Bigs fixed (tickets closed):
 ----------------------------
-* #7  - Import error on scan results from OpenVAS 3.0.1
-* #7  - Error converting OpenVAS .nbe to IVIL
-* #11 - ConfigTest is more verbose when it fails due to a missing config file
-* #12 - Installation error with tarball
-* #15 - Ungroup Compliance Scans
-* #16 - More gracefull error handling when Nikto doesn't find a config
-* #17 - File ~/scanners/Nikto/scan has no execute permission
-* ##  - Fixed a broken symlink in the development environment
-* #23 - Nessus xmlRPC port can now be selected
-* #25 - Fixed tarball installation error
-* #29 - JMVC framework updated to version 3.2.2
-
+* Issue #9 - Missing Hosts File in Nmap Scan
+* Issue #14 - Permit --nodelete option on do-scan
+* issue #26 - Update installation instructions
+* Issue #27 - Email Reporting
+* Issue #32 - RPM: Files in /opt/Seccubus/www/seccubus/json have no exec permissions
+* Issue #33 - User permission issues not reported correctly
+* Issue #34 - $HOSTS vs @HOSTS confusion
+* Issue #35 - -p vs --pw (OpenVAS)
+* Issue #39 - SeccubusScans exports uninitilized VERSION
+* Issue #42 - Nessus help (and scan?) not consistent with regards to the use of -p
+* Issue #43 - Sudo option missing from NMAP scanner help (web)
 ",
 "https://github.com/schubergphilis/Seccubus_v2/downloads",""];
 	} elsif ( $version eq $beta ) {

@@ -38,8 +38,9 @@ print $query->header("text/plain");
 		<a href=https://sourceforge.net/projects/seccubus/files/>
 		Download it from SourceForge</a>
 <p>Seccubus V2 is the active branch:<p>
-<p>You are running a V1 version of Seccubus. The latest verison in this branch is verison 1.5.5, however on the 8th of Januari 2011 Seccubus V2.0.beta1 was released.</p>
-<p>Seccubus V2 is the acively maintained and developed version of Seccubus. New features will be added and bugs will be fixed.</p>
+<p>You are running a V1 version of Seccubus. The latest verison in this branch is verison 1.5.5, however on the 22th of Januari 2012 Seccubus V2.0 was released.</p>
+<p>Seccubus V2 is the acively maintained and developed version of Seccubus.</p>
+<p>Seccubus V1 is <u><b>no longer supported</b></u></p>
 ";
 #} elsif ( $version eq $beta ) {
 	#print "Thanks for beta testing version $version";
