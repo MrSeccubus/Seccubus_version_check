@@ -13,7 +13,7 @@ use JSON;
 
 my $current = "2.0";
 my $beta = "2.1.rc1";
-my $cool = "2.0.99";
+my $cool = "2.0";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -40,7 +40,7 @@ if ( ! $version ) {
 	} elsif ( $version eq $current ) {
 		$data = [ "OK", "Your version $r_version is up to date",""];
 	} elsif ( $minor lt $two || ($minor eq $two && $revision lt $three) ) {
-		$data = [ "Error","Version $current is available, please upgrade...
+		$data = [ "Error","Version $current is available, please upgrade..." . '
 
 Release notes:
 
@@ -89,7 +89,7 @@ Bigs fixed (tickets closed):
 * Issue #39 - SeccubusScans exports uninitilized VERSION
 * Issue #42 - Nessus help (and scan?) not consistent with regards to the use of -p
 * Issue #43 - Sudo option missing from NMAP scanner help (web)
-",
+',
 "https://github.com/schubergphilis/Seccubus_v2/downloads",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
