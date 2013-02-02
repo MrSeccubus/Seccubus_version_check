@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.0";
-my $beta = "2.1.rc1";
+my $current = "2.1";
+my $beta = "2.2";
 my $cool = "2.0";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -66,31 +66,21 @@ Seccubus V2 works with the following scanners:
 
 For more information visit [www.seccubus.com]
 
-22-01-2012 - 2.0 - The Alt-S version
-====================================
+02-02-2012 - 2.1 - Bugfix release
+=================================
 
 Key new features / issues resolved
 ----------------------------------
-* Email notifications when a scan starts and a scan ends
-* Scan create and edit dialog now display default parameters
-* do-scan now has a --no-delete option to preserve temporary files
-* SSLyze support
+* Bugfixes
 
 Bigs fixed (tickets closed):
 ----------------------------
-* Issue #9 - Missing Hosts File in Nmap Scan
-* Issue #14 - Permit --nodelete option on do-scan
-* issue #26 - Update installation instructions
-* Issue #27 - Email Reporting
-* Issue #32 - RPM: Files in /opt/Seccubus/www/seccubus/json have no exec permissions
-* Issue #33 - User permission issues not reported correctly
-* Issue #34 - $HOSTS vs @HOSTS confusion
-* Issue #35 - -p vs --pw (OpenVAS)
-* Issue #39 - SeccubusScans exports uninitilized VERSION
-* Issue #42 - Nessus help (and scan?) not consistent with regards to the use of -p
-* Issue #43 - Sudo option missing from NMAP scanner help (web)
+* Issue #50 & #51 - Scan notifications are not listed and cannot be editted
+* Issue #52 - When running do-can with nmap as user seccubus with --sudo, chown on tmp files fails.
+* Issue #53 - Broken path in debian package
+* Issue #55 - Notifications table creates double header in certain cases
 ',
-"https://github.com/schubergphilis/Seccubus_v2/downloads",""];
+"http://seccubus.com/seccubus/download/146-seccubus-21-bugfix-release",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
 	} else {
