@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.1";
-my $beta = "2.2";
-my $cool = "2.0";
+my $current = "2.2";
+my $beta = "2.3";
+my $cool = "2.none";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -66,19 +66,31 @@ Seccubus V2 works with the following scanners:
 
 For more information visit [www.seccubus.com]
 
-02-02-2012 - 2.1 - Bugfix release
-=================================
+28-06-2013 - 2.2 - Nessus 5.2.1 and Unicode
+===========================================
 
 Key new features / issues resolved
 ----------------------------------
-* Bugfixes
+* Resolved an issue that cause incomptibility with Nessus API version 5.2.1 (Thanks Trelor)
+* Resolved an issue around encoding of Unicode chracters in Nessus output
+* Added shell script to execute crontab job only on a certain day
+* Added shell script to execute crontab job only on a weeknumber that can be devided by a certain number
+* Correct application of Apache license is now part of the unit tests
+* Resolved some caching issues with IE
 
 Bigs fixed (tickets closed):
 ----------------------------
-* Issue #50 & #51 - Scan notifications are not listed and cannot be editted
-* Issue #52 - When running do-can with nmap as user seccubus with --sudo, chown on tmp files fails.
-* Issue #53 - Broken path in debian package
-* Issue #55 - Notifications table creates double header in certain cases
+* Issue #50 - Notification table not displayed on edit scan
+* Issue #56 - IVIL conversion shell call needs qoutes around filename
+* Issue #64 - New scan dialog shows 'new workspace' in title
+* Issue #65 - Each CGI response header now invalidates caching
+* Issue #66 - Username field too small
+* Issue #72 - Apache license isn't applied correctly
+* Issue #75 - Typo: datatbase in ConfigTest.pl
+* Issue #77 - Seccubus incompatible with Nessus API 5.2.1
+* Issue #78 - Unicode in nessus file breaks ivil import
+* Updated dependancies in RPM
+* Fixed some minor DB error scripts
 ',
 "http://seccubus.com/seccubus/download/146-seccubus-21-bugfix-release",""];
 	} elsif ( $version eq $beta ) {
