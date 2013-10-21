@@ -80,7 +80,7 @@ Bugs fixed (tickets closed):
 * #62 - Would like to be able to run Nmap/Nikto/SSLyze scans on a remote host
 * #84 - Nessus critical findings got severity 0
 * #87 - Hostname ordering was weird because of wildards for hostnames
-* #88 - '*' is not selected in filters when no filter is given
+* #88 - "*" is not selected in filters when no filter is given
 * #89 - Scans fail to import due to database timeouts
 * #90 - Hostnames are not sorted in filters, IP addresses are
 * OBS build script now echos link to OBS project
