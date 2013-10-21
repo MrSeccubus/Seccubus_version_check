@@ -40,7 +40,7 @@ if ( ! $version ) {
 	} elsif ( $version eq $current ) {
 		$data = [ "OK", "Your version $r_version is up to date",""];
 	} elsif ( $minor lt $two || ($minor eq $two && $revision lt $three) ) {
-		$data = [ "Error","Version $current is available, please upgrade..." . '
+		$data = [ "Error","Version $current is available, please upgrade..." . qq{
 
 Release notes:
 
@@ -84,7 +84,7 @@ Bugs fixed (tickets closed):
 * #89 - Scans fail to import due to database timeouts
 * #90 - Hostnames are not sorted in filters, IP addresses are
 * OBS build script now echos link to OBS project
-',
+},
 "http://seccubus.com/seccubus/download/146-seccubus-21-bugfix-release",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
