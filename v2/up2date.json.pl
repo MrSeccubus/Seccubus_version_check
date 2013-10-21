@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.2";
-my $beta = "2.3";
+my $current = "2.3";
+my $beta = "2.4";
 my $cool = "2.none";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -44,8 +44,8 @@ if ( ! $version ) {
 
 Release notes:
 
-Seccubus V2 Change Log
-======================
+Seccubus V2 Read Me
+===================
 Seccubus automates regular vulnerability scans with vrious tools and aids
 security people in the fast analysis of its output, both on the first scan and
 on repeated scans.
@@ -60,40 +60,30 @@ for Seccubus V1 has officially been dropped.
 Seccubus V2 works with the following scanners:
 * Nessus 4.x and 5.x (professional and home feed)
 * OpenVAS
-* Nikto
-* NMap
+* Nikto (local and remote)
+* NMap (local and remote)
 * SSLyze
 
 For more information visit [www.seccubus.com]
 
-15-10-2013 - 2.2 - Nessus 5.2.1, unicode and performance
-========================================================
+18-10-2013 - 2.3 - Improved stability, Nmap and Nikto on remote hosts
+=====================================================================
 
 Key new features / issues resolved
 ----------------------------------
-* Major performance increase by moving processing of sttus buttons and filters to backend
-* Resolved an issue that cause incomptibility with Nessus API version 5.2.1 (Thanks Trelor)
-* Resolved an issue around encoding of Unicode chracters in Nessus output
-* Added shell script to execute crontab job only on a certain day
-* Added shell script to execute crontab job only on a weeknumber that can be devided by a certain number
-* Correct application of Apache license is now part of the unit tests
-* Resolved some caching issues with IE
+Seccubus now checks the state of the DBI handle before performing queries
+Improved handling of Nessus 5.2 file format
+Fixed some issues related to the new backend filters
 
-Bigs fixed (tickets closed):
+Bugs fixed (tickets closed):
 ----------------------------
-* Issue #48 - Filters need to be processed in backend, not front end
-* Issue #50 - Notification table not displayed on edit scan
-* Issue #56 - IVIL conversion shell call needs qoutes around filename
-* Issue #64 - New scan dialog shows \'new workspace\' in title
-* Issue #65 - Each CGI response header now invalidates caching
-* Issue #66 - Username field too small
-* Issue #72 - Apache license isn\'t applied correctly
-* Issue #75 - Typo: datatbase in ConfigTest.pl
-* Issue #77 - Seccubus incompatible with Nessus API 5.2.1
-* Issue #78 - Unicode in nessus file breaks ivil import
-* Issue #86 - getFilters API
-* Updated dependancies in RPM
-* Fixed some minor DB error scripts
+* #62 - Would like to be able to run Nmap/Nikto/SSLyze scans on a remote host
+* #84 - Nessus critical findings got severity 0
+* #87 - Hostname ordering was weird because of wildards for hostnames
+* #88 - '*' is not selected in filters when no filter is given
+* #89 - Scans fail to import due to database timeouts
+* #90 - Hostnames are not sorted in filters, IP addresses are
+* OBS build script now echos link to OBS project
 ',
 "http://seccubus.com/seccubus/download/146-seccubus-21-bugfix-release",""];
 	} elsif ( $version eq $beta ) {
