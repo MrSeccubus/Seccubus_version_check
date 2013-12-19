@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.3";
-my $beta = "2.4";
+my $current = "2.4";
+my $beta = "2.5";
 my $cool = "2.none";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -53,8 +53,7 @@ on repeated scans.
 On repeated scan delta reporting ensures that findings only need to be judged
 when they first appear in the scan results or when their output changes.
 
-Seccubus 2.0 is marks the end of the beta phase for the 2.0 branch.
-This code is the only actively developed and maintained branch and all support
+Seccubus 2.x is the only actively developed and maintained branch and all support
 for Seccubus V1 has officially been dropped.
 
 Seccubus V2 works with the following scanners:
@@ -66,24 +65,16 @@ Seccubus V2 works with the following scanners:
 
 For more information visit [www.seccubus.com]
 
-18-10-2013 - 2.3 - Improved stability, Nmap and Nikto on remote hosts
-=====================================================================
+19-12-20134 - 2.4 - Screen updates, restored
+============================================
 
 Key new features / issues resolved
 ----------------------------------
-Seccubus now checks the state of the DBI handle before performing queries
-Improved handling of Nessus 5.2 file format
-Fixed some issues related to the new backend filters
+A bug that broke the automatic updating of the GUI mast fixed
 
 Bugs fixed (tickets closed):
 ----------------------------
-* #62 - Would like to be able to run Nmap/Nikto/SSLyze scans on a remote host
-* #84 - Nessus critical findings got severity 0
-* #87 - Hostname ordering was weird because of wildards for hostnames
-* #88 - "*" is not selected in filters when no filter is given
-* #89 - Scans fail to import due to database timeouts
-* #90 - Hostnames are not sorted in filters, IP addresses are
-* OBS build script now echos link to OBS project
+#97 - Screen refresh doesn't work anywhere (basically)
 },
 "http://seccubus.com/seccubus/download/146-seccubus-21-bugfix-release",""];
 	} elsif ( $version eq $beta ) {

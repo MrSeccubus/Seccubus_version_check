@@ -10,7 +10,7 @@
 use strict;
 use CGI;
 
-my $current = "2.0.beta1 or higher";
+my $current = "2.0 or higher";
 my $beta = "xxxxx";
 my $cool = "xxxxx";
 my ( $one, $two, $three) = split /\./, $current;
