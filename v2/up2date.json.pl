@@ -4,15 +4,15 @@
 # ------------------------------------------------------------------------------
 # List the scans
 # ------------------------------------------------------------------------------
-# Copyright (C) 2008  Schuberg Philis, Frank Breedijk - Under GPLv3
+# Copyright (C) 2008  Schuberg Philis, Frank Breedijk, gtencate, blabla1337 - Under GPLv3
 # ------------------------------------------------------------------------------
 
 use strict;
 use CGI;
 use JSON;
 
-my $current = "2.4";
-my $beta = "2.5";
+my $current = "2.6";
+my $beta = "2.7";
 my $cool = "2.none";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -61,22 +61,25 @@ Seccubus V2 works with the following scanners:
 * OpenVAS
 * Nikto (local and remote)
 * NMap (local and remote)
+* Skipfish (local and remote)
 * SSLyze
 
 For more information visit [www.seccubus.com]
 
-19-12-20134 - 2.4 - Screen updates, restored
+21-05-2014 - 2.6 - Bug Fixes
 ============================================
 
 Key new features / issues resolved
 ----------------------------------
-A bug that broke the automatic updating of the GUI mast fixed
+A couple of bugs are now fixed thanks to Arkanoi and SphaZ
 
 Bugs fixed (tickets closed):
 ----------------------------
-#97 - Screen refresh doesn't work anywhere (basically)
+Issue #105 - please mask scanner passwords 
+Issue #106 - long Nessus scan results are not loaded
+
 },
-"http://seccubus.com/seccubus/download/146-seccubus-21-bugfix-release",""];
+"https://www.seccubus.com/seccubus-v2-6-bug-fixes/",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
 	} else {
