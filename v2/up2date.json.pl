@@ -46,7 +46,7 @@ Release notes:
 
 Seccubus V2 Read Me
 ===================
-Seccubus automates regular vulnerability scans with vrious tools and aids
+Seccubus automates regular vulnerability scans with various tools and aids
 security people in the fast analysis of its output, both on the first scan and
 on repeated scans.
 
