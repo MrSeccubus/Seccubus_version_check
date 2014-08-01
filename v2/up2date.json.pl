@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.6";
-my $beta = "2.7";
+my $current = "2.8";
+my $beta = "2.9";
 my $cool = "2.none";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -79,7 +79,7 @@ Issue #105 - please mask scanner passwords
 Issue #106 - long Nessus scan results are not loaded
 
 },
-"https://www.seccubus.com/seccubus-v2-6-bug-fixes/",""];
+"https://www.seccubus.com/seccubus-v2-8/",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
 	} else {
