@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.8";
-my $beta = "2.9";
+my $current = "2.9";
+my $beta = "2.10";
 my $cool = "2.none";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -67,14 +67,18 @@ Seccubus V2 works with the following scanners:
 
 For more information visit [www.seccubus.com]
 
-01-08-2014 - 2.8 - New scanner and Burp parser
-============================================
-Medusa is added to scanner tools thnx to Arkanoi
-Added burp parser to ivil thnx to SphaZ 
+18-08-2014 - 2.9 - Qualys SSLlabs integration
+=============================================
+Seccubus can now fetch the results of www.ssllabs.com automatic scanner and monitor for deltas
 
-21-05-2014 - 2.6 - Bug Fixes
+Bug Fixes
 ============================================
-A couple of bugs are now fixed thanks to Arkanoi and SphaZ
+* #122 - SSLlabs integration
+* #120 - SELinux problem on RHEL6
+* #99 - The ability to remote is not reflected in the scanner help text
+* #67 - -o usage needs to be more specific for e.g. nikto and nmap scanner
+* #63 - Scan table does not display scanner correctly
+* #59 - Explanation of \$ATTACH: in notifications is not very clear
 
 
 },
