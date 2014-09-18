@@ -33,7 +33,7 @@ if ( ! $version ) {
 
 	my ($major, $minor, $revision) = split /\./, $version;
 
-	if ($major < $one ) {
+	if ($major lt $one ) {
 		$data = [ "Error", "This check only supports version 2.x.x","" ] ;
 	} elsif ( $version eq $cool ) {
 		$data = [ "OK", "You are using the first non-beta version of Seccubus 2.0 released at the Alt-S conference on 22-1-2013",""];
