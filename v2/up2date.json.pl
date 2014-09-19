@@ -33,13 +33,13 @@ if ( ! $version ) {
 
 	my ($major, $minor, $revision) = split /\./, $version;
 
-	if ($major lt $one ) {
+	if ($major < $one ) {
 		$data = [ "Error", "This check only supports version 2.x.x","" ] ;
-	} elsif ( $version eq $cool ) {
+	} elsif ( $version == $cool ) {
 		$data = [ "OK", "You are using the first non-beta version of Seccubus 2.0 released at the Alt-S conference on 22-1-2013",""];
-	} elsif ( $version eq $current ) {
+	} elsif ( $version == $current ) {
 		$data = [ "OK", "Your version $r_version is up to date",""];
-	} elsif ( $minor lt $two || ($minor eq $two && $revision lt $three) ) {
+	} elsif ( $minor < $two || ($minor == $two && $revision < $three) ) {
 		$data = [ "Error","Version $current is available, please upgrade..." . qq{
 
 Release notes:
