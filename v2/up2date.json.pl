@@ -44,7 +44,7 @@ if ( ! $version ) {
 
 Release notes:
 ==============
-Thanks for this release goes to Alexey Smirnoff (@Arkanoi) and his employer Parallels Inc.
+Thanks for this release goes to Alexey Smirnoff (\@Arkanoi) and his employer Parallels Inc.
 
 Alexey whipped together the Nessus 6 compatibility, fixed issues with the Qualys SSLlabs scanner.
 Further more his employer Parallels Inc. sponsored the development of the asset management and custom
