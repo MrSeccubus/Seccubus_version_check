@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.12";
-my $beta = "2.13";
+my $current = "2.14";
+my $beta = "2.15";
 my $cool = "2.none";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -42,34 +42,18 @@ if ( ! $version ) {
 	} elsif ( $minor < $two || ($minor == $two && $revision < $three) ) {
 		$data = [ "Error","Version $current is available, please upgrade..." . qq{
 
-Release notes:
-==============
-Thanks for this release goes to Alexey Smirnoff (\@Arkanoi) and his employer Parallels Inc.
+Release notes
+=============
 
-Alexey whipped together the Nessus 6 compatibility, fixed issues with the Qualys SSLlabs scanner.
-Further more his employer Parallels Inc. sponsored the development of the asset management and custom
-SQL feature.
-
-28-12-2014 - 2.11 - Nessus 6 compatibility, assets, custom SQL and more
-06-01-2015 - 2.12 - Fixes database error in 2.11
-======================================
-* Nessus 6 compatibility release. Tennable decided to change the Nessus API between
-versions 5 and 6, therefore the Nessus plugin did not work correctly with version 6
-anymore. Alexey Smirnoff was kind enough to provide a new Nessus6 scanner plugin that
-supports the new Nessus API.
-* Added asset management and the ability to execute custom SQL to Seccubus
-* Added indexes to findings (host,port,plugin) to speed up large DB queries
+24-02-2015 - 2.14 - SSL labs API
+================================
+The SSL labs scanner now uses the SSL labs API (see https://github.com/ssllabs/ssllabs-scan/blob/master/ssllabs-api-docs.md) to check the SSL configuration of your website in stead of scraping the site.
 
 Bug Fixes
-============================================
-* #140 - Nessus 6 integration
-* #141 - Multiple issues with Qualys SSLlabs scanner
-* #144 - Perl-CGI is bundled with perl 5.8 rpm's so no need to bundle it
-* #152 - Pull request for Asset management
-* #159 - It was impossible to launch scan with policy that lacks template UUID
-* #165 - Field password is missing from table scans
+=========
+* No additional bugfixes
 },
-"https://www.seccubus.com/seccubus-v2-12/",""];
+"https://github.com/schubergphilis/Seccubus_v2/releases",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
 	} else {
