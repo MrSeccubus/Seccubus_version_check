@@ -44,9 +44,11 @@ if ( ! $version ) {
 		$data = [ "Error","Version $current is available, please upgrade..." . qq{
 
 Release notes
-15-09-2015 - 2.16 - GNU Terry Pratchett
-=======================================
+17-09-2015 - 2.17 - GNU Terry Pratchett (Fixed!)
+================================================
 The bonanza of after summer fixes and small enhancements continues
+Our dear contributor @Ar0xa notified us of a bug in v2.16 which has been fixed in this release
+See bug #260
 
 Enhancements
 ------------
@@ -78,6 +80,7 @@ Bug Fixes
 * Copyright related unit tests now work on Travis CI too
 * #252 - scannerparam column in scans table too small
 * #255 - Incorrect use of CGI.pm may cause parameter injection vulnerability
+* #260 - Runs not showing in Seccubus v2.16
 },
 "https://github.com/schubergphilis/Seccubus_v2/releases",""];
 	} elsif ( $version eq $beta ) {
