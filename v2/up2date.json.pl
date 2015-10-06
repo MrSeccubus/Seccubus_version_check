@@ -41,7 +41,7 @@ if ( ! $version ) {
 	} elsif ( $version == $current ) {
 		$data = [ "OK", "Your version $r_version is up to date",""];
 	} elsif ( $minor < $two || ($minor == $two && $revision < $three) ) {
-		$data = [ "Error","Version $current is available, please upgrade..." . qq{
+		$data = [ "Error","Version $current is available, please upgrade..." . q{
 
 Release notes
 17-09-2015 - 2.17 - GNU Terry Pratchett (Fixed!)
