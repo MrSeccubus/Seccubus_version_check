@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.16";
-my $beta = "2.17";
+my $current = "2.17";
+my $beta = "2.18";
 my $cool = "-2.0";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
