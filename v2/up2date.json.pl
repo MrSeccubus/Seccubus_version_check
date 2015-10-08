@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.17";
-my $beta = "2.18";
+my $current = "2.18";
+my $beta = "2.19";
 my $cool = "-2.0";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -44,43 +44,18 @@ if ( ! $version ) {
 		$data = [ "Error","Version $current is available, please upgrade..." . q{
 
 Release notes
-17-09-2015 - 2.17 - GNU Terry Pratchett (Fixed!)
-================================================
-The bonanza of after summer fixes and small enhancements continues
-Our dear contributor @Ar0xa notified us of a bug in v2.16 which has been fixed in this release
-See bug #260
+
+08-10-2015 - 2.18 - Fixed a notifications error
+===============================================
+Some people noticed that notifications were not visible anymore, Jordan and I fixed them
 
 Enhancements
 ------------
-* #185 - GNU Terry Pratchett
-* #214 - NMap, include port status in port number
-* #223 - Make the Bulk Update feature much faster in the GUI
-* #228 - SSL Labs: Warn if MaxAge is below the recommended 180 days
-* #226 - Create Travis Unit tests for DB upgrade
-* #241 - Unit tests for delta engine
-* Moved to new Travis build infra. See: http://docs.travis-ci.com/user/migrating-from-legacy/
+* Unit tests for notifications API
 
 Bug Fixes
 ---------
-* #180 - NMAP script output ignored
-* #186 - Custom SQL table is missing from DB init scripts
-* #198 - Unable to add more then 1 asset
-* #199 - asset_host broken in v6 and upgrade problems
-* #200: Error using ZAP remote
-* Fixed ZAP file handling issue
-* Fixed a new found bug in ivil2zap, more output now in findings
-* Fixed SSLlabs error exception
-* #213 - .spec file still references v4 data structures instead of v6
-* #222 - SSL Labs: hasSct and sessionTickets findings not saved in IVIL file
-* #224 - Bulk Update controller not updated after update of remark only
-* #236 - Database upgrades inconsistent
-* #243 - do-scan -q is not very quiet
-* #247 - SSLLabs: certain values for PoodleTLS not handled
-* #248 - SSLLabs Reneg finding empty is reneg is not supported 
-* Copyright related unit tests now work on Travis CI too
-* #252 - scannerparam column in scans table too small
-* #255 - Incorrect use of CGI.pm may cause parameter injection vulnerability
-* #260 - Runs not showing in Seccubus v2.16
+* #267 - Email notification config is not showing
 },
 "https://github.com/schubergphilis/Seccubus_v2/releases",""];
 	} elsif ( $version eq $beta ) {
