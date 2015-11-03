@@ -11,8 +11,8 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.18";
-my $beta = "2.19";
+my $current = "2.20";
+my $beta = "2.21";
 my $cool = "-2.0";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
@@ -45,18 +45,23 @@ if ( ! $version ) {
 
 Release notes
 
-08-10-2015 - 2.18 - Fixed a notifications error
-===============================================
-Some people noticed that notifications were not visible anymore, Jordan and I fixed them
+28-10-2015 - 2.20 - What is the issue?
+======================================
+This release introduces a major new feature that has been in my head since the beginning of Seccubus version 2: Issues.
+
+An issue is a sort of trouble ticket that allows you to link multiple findings together, in order to help keeping track of the remediation process.
+An issues can be linked to multiple findings (e.g. because you have the same finding across different hosts) and at the same time a single finding can be linked to multiple issue (e.g. multiple certificate issues found in a single finding).
+
+If you want to know more about issue, please see the online documentation at [www.seccubus.com]
 
 Enhancements
 ------------
-* Unit tests for notifications API
+#238 - Issues
 
 Bug Fixes
 ---------
-* #267 - Email notification config is not showing
-},
+#244 - Database model and database not consistent anymore
+ß},
 "https://github.com/schubergphilis/Seccubus_v2/releases",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
