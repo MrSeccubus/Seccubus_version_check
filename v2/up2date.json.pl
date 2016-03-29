@@ -13,7 +13,7 @@ use JSON;
 
 my $current = "2.20";
 my $beta = "2.21";
-my $cool = "-2.0";
+my $cool = "2.22";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -37,7 +37,7 @@ if ( ! $version ) {
 	if ($major < $one ) {
 		$data = [ "Error", "This check only supports version 2.x.x","" ] ;
 	} elsif ( $version == $cool ) {
-		$data = [ "OK", "You are using the first non-beta version of Seccubus 2.0 released at the Alt-S conference on 22-1-2013",""];
+		$data = [ "OK", "You are using the newest version of Seccubus. This version check will be updated soon",""];
 	} elsif ( $version == $current ) {
 		$data = [ "OK", "Your version $r_version is up to date",""];
 	} elsif ( $minor < $two || ($minor == $two && $revision < $three) ) {
