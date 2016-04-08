@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.20";
-my $beta = "2.21";
-my $cool = "2.22";
+my $current = "2.22";
+my $beta = "2.23";
+my $cool = "2.24";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -45,23 +45,34 @@ if ( ! $version ) {
 
 Release notes
 
-28-10-2015 - 2.20 - What is the issue?
-======================================
-This release introduces a major new feature that has been in my head since the beginning of Seccubus version 2: Issues.
+8-4-2016 - Seccubus v2.22 - OpenVAS integration fixed
+=====================================================
 
-An issue is a sort of trouble ticket that allows you to link multiple findings together, in order to help keeping track of the remediation process.
-An issues can be linked to multiple findings (e.g. because you have the same finding across different hosts) and at the same time a single finding can be linked to multiple issue (e.g. multiple certificate issues found in a single finding).
+OpenVAS integration has been a freebee for a while, until OpenVAS and Nessus split their respective interfaces.
+Seccubus' OpenVAS OMP integration has never been super stable, but it is now, and it doesn't depend on the omp 
+command line utility anymore.
+Furthermore two critical bug where fixed and the release process got a major overhaul.
 
-If you want to know more about issue, please see the online documentation at [www.seccubus.com]
+As usual you can download it [here](https://github.com/schubergphilis/Seccubus_v2/releases)
 
 Enhancements
 ------------
-#238 - Issues
+* Improved the release process (see [https://www.seccubus.com/documentation/22-releasing/])
+* #308 - Rewrote the OpenVAS scan script with the following objectives:
+
+  - Remove dependancy on the omp utility (because I don't have it on my Mac for starters)
+  - XML parsing is now done with XML::Simple in stead of manually (which is fragile)
+  - Better error handling
+
 
 Bug Fixes
 ---------
-#244 - Database model and database not consistent anymore
-ß},
+* #289 - Online version test needs a unit test
+* #269 - Correct handling of multiple address nodes in NMap XML
+* #298 - OpenVAS6: fix scan and import to ivil 
+* #297 - Port field abused to store port state
+* #307 - OpenVAS integration was broken
+},
 "https://github.com/schubergphilis/Seccubus_v2/releases",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the trunk version ($version) of Seccubus, proceed at your own risk",""];
