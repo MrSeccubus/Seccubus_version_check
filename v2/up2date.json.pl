@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.22";
-my $beta = "2.23";
-my $cool = "2.24";
+my $current = "2.24";
+my $beta = "2.25";
+my $cool = "2.26";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -45,33 +45,23 @@ if ( ! $version ) {
 
 Release notes
 
-8-4-2016 - Seccubus v2.22 - OpenVAS integration fixed
-=====================================================
+22-04-2016 - 2.24 - RPM and cert improvements
+=============================================
 
-OpenVAS integration has been a freebee for a while, until OpenVAS and Nessus split their respective interfaces.
-Seccubus' OpenVAS OMP integration has never been super stable, but it is now, and it doesn't depend on the omp 
-command line utility anymore.
-Furthermore two critical bug where fixed and the release process got a major overhaul.
-
-As usual you can download it [here](https://github.com/schubergphilis/Seccubus_v2/releases)
+Not everything went perfect upgrading the build process, so we had to tweak the RPM a little and fix an error in the UpToDate.pl script.
 
 Enhancements
 ------------
-* Improved the release process (see [https://www.seccubus.com/documentation/22-releasing/])
-* #308 - Rewrote the OpenVAS scan script with the following objectives:
-
-  - Remove dependancy on the omp utility (because I don't have it on my Mac for starters)
-  - XML parsing is now done with XML::Simple in stead of manually (which is fragile)
-  - Better error handling
-
+* #310 - Root CA for v2.seccubus.com ([LetsEncrypt](https://letsencrypt.org/)) is now pinned for the version check
+* #316 - Clarify create database and grant statement in ConfigTest.pl
 
 Bug Fixes
 ---------
-* #289 - Online version test needs a unit test
-* #269 - Correct handling of multiple address nodes in NMap XML
-* #298 - OpenVAS6: fix scan and import to ivil 
-* #297 - Port field abused to store port state
-* #307 - OpenVAS integration was broken
+* #310 - Version check does not like my certificate
+* #311 - RPM: Config could not be found after version upgrade to 2.22
+* #313 - RPM: Seccubus.conf not placed in correct directory (v2.22)
+* #314 - RPM: v2.22 /opt/seccubus/www/dev should not exist
+* #315 - RPM: v2.22 dependancy mysql-server is not installed 
 },
 "https://github.com/schubergphilis/Seccubus_v2/releases",""];
 	} elsif ( $version eq $beta ) {
