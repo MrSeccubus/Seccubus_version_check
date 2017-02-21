@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.26";
-my $beta = "2.27";
-my $cool = "2.28";
+my $current = "2.28";
+my $beta = "2.29";
+my $cool = "2.30";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -45,43 +45,35 @@ if ( ! $version ) {
 
 Release notes
 
-12-7-2016 - 2.26 - Speed improvements and a whole log of bugfixes
-=================================================================
-This release is especially interesting for those of you that are working with large result sets.
-The number of findigns that is returned is now limited to 200 results by default and can be adjusted
-up or down.
-A lot of the filter logic has been moved from the Perl backend to more intelligent database queries 
-where caching and other optimalisations techniques prevent timeouts when working with larger result
-sets.
+For my work at Schuberg Philis we wanted to run Seccubus in Docker 
+containers. This and inspiration from Karl Newell (see https://hub.docker.com/r/karlnewell/seccubus/) 
+caused me to add a Dockerfile (and some other files) to Seccubus so that Seccubus can now be 
+run in a docker container. 
 
-Additional improvements are done the rpm packaging and the Nessus6 scanner wich now no longer depends
-on certain excotic perl modules.
-
-The number of change records that is created and displayed has been reduced and some other more minor 
-have been fixed too.
+In addition I fixed a couple of bugs and changed the ssllabs scanner so it now uses the v3 API endpoint.
 
 Enhancements
 ------------
-* #128 - Limit the amount of findings that is returned from the back end 
-* #312 - SSLLabs and Nessus6 scanner no longer depend on perl-REST-Client
-* #319 - RPM now builds and installs under CentOs/RHEL 5 too
-* #320 - Nessus6 scanner now downloads PDF and HTML version of report too
-* #322 - Removed old scanners: Nessus v5 and earlier, OpenVAS v5 and earlier
-* Improved exit codes for the onlyonxday.sh utility
+* #361 - arkenoi created a netsparker2ivil tool that allows you to manually import Netsparker scans
+* #331 - Now using SSLLabs API v3
+* #386 - New SSL labs API output featues incorporporated
+* #389 - API endpoint URL has moved to a single function so it can be patched if deployed in a 
+         three tier architecture
+* #392 - Alternative handling of the updateFIndings.pl API
+* #397 - Allow seccubus to authenticate via an http request header
+* #399 - Create a Docker container for Seccubus
 
 Bug Fixes
 ---------
-* #344 - Nessus6 scanner script using LWP::UserAgent is too brittle
-* #330 - Add perl-LWP-Protocol-https as RPM dependency
-* #328 - CopyRight year unit test appears to be broken on Travis
-* #327 - OpenVAS target is always created with the default portlist
-* #323 - Non-critical warnings in unit tests fixed
-* #333 - LWP::UserAgent is missing method delete on RH5 and RH6
-* #305 - Finding change records are generated even if a finding did not actually change
-* #300 - Editing an issue and updating the severity doesn't work
-* #295 - Trigger in notification edit will fall back to previous on re-edit
-* #277 - Remove redundant documentation from source tree
-* #183 - SSL validation ingore not corretly implemented
+* #364 - auto_gen column was missing from asset_host table
+* #358 - Could not get findings when an asset was used for the query
+* #360 - Not able to export report in PDF format - This breaks the scan
+* #336 - Non-critical RPM errors on CentOS 5
+* #376 - Removed 50 host limit in filters as it was counterproductive
+* #374 - Fixed Nikto path detection code
+* #377 - Hostname filter wasn't working correctly, typed Hostname iso HostName
+* #385 - SSLlabs failed because cypher preference order was split out per protocol by SSLlabs now.
+* #394 - SSLlabs scanner failed if all enpoints fail and --gradeonly was used
 },
 "https://github.com/schubergphilis/Seccubus_v2/releases",""];
 	} elsif ( $version eq $beta ) {
