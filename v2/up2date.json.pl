@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.30";
-my $beta = "2.31";
-my $cool = "2.32";
+my $current = "2.32";
+my $beta = "2.33";
+my $cool = "2.34";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -45,32 +45,20 @@ if ( ! $version ) {
 
 Release notes
 
-One of the things that has been lacking for a while were proper workspace export and import tools. This release adds them and fixes another issue that has been on our whishlist for long, better handling of gone findings reappearing.
+18-4-2017 - v2.32 - Added dist tag to RPM filename
+==================================================
 
-Now when a finding that was previously marked as gone reappears in a scan the 'status before gone' is taken into account.
-
-When the 'status before gone' was:
-* New - The finding will reappear as new
-* Changed - The finding will reappear as changed
-* Open - The finding will reappear as open, unless the finding text has changed, then it will reappear as changed
-* No issue - The finding wil reappear as no issue, unless the finding text has changed, then it will reappear as changed
-* MASKED - The finding will stay MASKED
+This release is a fixup release of version 2.30. It fixes two errors in import/export and provides
+specific RPMs for el5, el6 and el7 now.
 
 Enhancements
 ------------
-* #126 - Delta engine improved: Beter recovery from GONE findings
-* #257 - Import/export tools added
-* #408 - Seccubus now refuses to load an ivil file with 0 findings
-* #412 - Disabled tofu to enhance Docker support
-* #419 - Enable crontab support in docker images
-* #423 - Show futureGrade in SSLlabs scan results
 
 Bug Fixes
 ---------
-* #403 - SSLlabs scanner help file was not up to date
-* #414 - Mkdir error will no longer appear if entrypoint.sh is run twice
-* #426 - Corrections to README.md from Karol Kozakowski merged
-* #432 - StaticPkpPolicy not recognized
+#438 - Export failed when a scan did not have any attachments
+#440 - Import fails if issue it is linked is older then before
+#443 - Added dist tag to RPM filename
 },
 "https://github.com/schubergphilis/Seccubus_v2/releases",""];
 	} elsif ( $version eq $beta ) {
