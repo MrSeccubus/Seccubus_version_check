@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.32";
-my $beta = "2.33";
-my $cool = "2.34";
+my $current = "2.34";
+my $beta = "2.35";
+my $cool = "2.36";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -45,22 +45,49 @@ if ( ! $version ) {
 
 Release notes
 
-18-4-2017 - v2.32 - Added dist tag to RPM filename
-==================================================
+15-6-2017 - v2.34 - Backend rewritten in Mojolicious
+=====================================================
 
-This release is a fixup release of version 2.30. It fixes two errors in import/export and provides
-specific RPMs for el5, el6 and el7 now.
+The Seccubusd backend has been REST-ish ever since release v2.0. This web backend was implemented
+via Perl CGI scripts (yes, using CGI.pm). Needless to say something needed to change.
+
+This backend rewrite has been in the making for some time now and we are finally ready to release
+it into the wild.
+
+What are the major changes?
+* Backend rewritten in [Mojolicious](http://mojolicious.org/)
+* Backend API is now REST compliant and located at /api
+* There is no need to run an external webserver for Seccubus, it is built into Mojolicious
+* Seccubus now has built in user authentication (Defaqult admin password is 'GiveMeVulns!')
+* Fixed a lot off old issues
+* Unfortunately there is no solid Mojolicious v6/v7 rpms for RedHat/Centos, so we can no longer provide RPMs for those operating systems
 
 Enhancements
 ------------
+* #411 - Ported the backend to Mojolicious and pure REST
+* #448 - Allow import and export utility to read config from specific file
 
 Bug Fixes
 ---------
-#438 - Export failed when a scan did not have any attachments
-#440 - Import fails if issue it is linked is older then before
-#443 - Added dist tag to RPM filename
+* Fixed a weird sorting bug when using Chrome
+* #138 - Can't locate SeccubusV2.pm in @INC (you may need to install the SeccubusV2 module)
+* #143 - Make RPM so that nginx is supported too
+* #171 - column formatting in custom SQL is off
+* #190 - XSS in custom SQL query
+* #193 - RFE: please add a logout button for additional security
+* #263 - SeccubusHelpers.pm contains two unused functions
+* #363 - API calls for asset use workspace iso of workspaceId which is the standard
+* #384 - Missing SMTP server config should be warning, not error
+* #396 - ConfigTest should return non 200 if config is not ok
+* #417 - Docker container is not https-enabled by default
+* #418 - Docker images lacks proper data management
+* #430 - Set correct paths for perl and nikto so that do-scan and nikto can now be run by any user
+* #445 - RPM errors
+* #457 - Mine attachment not sent correctly
+* #465 - JSON::false returns "false" on certain platforms
+* #466 - /api/version should not be an authenticated call
 },
-"https://github.com/schubergphilis/Seccubus_v2/releases",""];
+"https://github.com/schubergphilis/Seccubus/releases/latest",""];
 	} elsif ( $version eq $beta ) {
 		$data = ["OK", "Your version ($r_version) is the active development version ($version) of Seccubus, it includes the latest features but may include the latest artifacts as well ;)",""];
 	} else {
