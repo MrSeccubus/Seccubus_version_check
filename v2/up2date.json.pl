@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.34";
-my $beta = "2.35";
-my $cool = "2.36";
+my $current = "2.36";
+my $beta = "2.37";
+my $cool = "2.38";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -45,47 +45,43 @@ if ( ! $version ) {
 
 Release notes
 
-15-6-2017 - v2.34 - Backend rewritten in Mojolicious
-=====================================================
+29-6-2017 - v2.36 - TestSSL.sh release
+======================================
 
-The Seccubusd backend has been REST-ish ever since release v2.0. This web backend was implemented
-via Perl CGI scripts (yes, using CGI.pm). Needless to say something needed to change.
+This release has been in the making for a long time. In fact the first pull
+request for it's main feature was back in June 2016 by our friend and then
+colleague Glenn ten Cate.
 
-This backend rewrite has been in the making for some time now and we are finally ready to release
-it into the wild.
+This release marks the integration of Dirk Wetter's excellent tool testssl.sh
+into Seccubus. With testssl.sh you can get a detailed overview of how well
+your TLS enabled service is set up. Not just for websites, but for any TCP
+service, even those that use STARTTLS.
 
-What are the major changes?
-* Backend rewritten in [Mojolicious](http://mojolicious.org/)
-* Backend API is now REST compliant and located at /api
-* There is no need to run an external webserver for Seccubus, it is built into Mojolicious
-* Seccubus now has built in user authentication (Defaqult admin password is 'GiveMeVulns!')
-* Fixed a lot off old issues
-* Unfortunately there is no solid Mojolicious v6/v7 rpms for RedHat/Centos, so we can no longer provide RPMs for those operating systems
+In addition we introduced the --cdn switch for ssllabs, to reduce noise for
+CDN enabled sites, we the ability to dynamically create users via JIT
+provisionsing and we added CSRF protection for enhanced security.
+
+To boost future code quality, Perl::Critic testing has been integrated in the
+unit testing process.
+
+Besides that we squased some bugs, five of which got introduced in the previous release :(
 
 Enhancements
 ------------
-* #411 - Ported the backend to Mojolicious and pure REST
-* #448 - Allow import and export utility to read config from specific file
+#302 - Testssl.sh support for Seccubus
+#401 - JIT provisioning of users
+#442 - Add --cdn option to ssllabs
+* Perl Critic is now part of unit testing. All critique was handled
 
 Bug Fixes
 ---------
-* Fixed a weird sorting bug when using Chrome
-* #138 - Can't locate SeccubusV2.pm in @INC (you may need to install the SeccubusV2 module)
-* #143 - Make RPM so that nginx is supported too
-* #171 - column formatting in custom SQL is off
-* #190 - XSS in custom SQL query
-* #193 - RFE: please add a logout button for additional security
-* #263 - SeccubusHelpers.pm contains two unused functions
-* #363 - API calls for asset use workspace iso of workspaceId which is the standard
-* #384 - Missing SMTP server config should be warning, not error
-* #396 - ConfigTest should return non 200 if config is not ok
-* #417 - Docker container is not https-enabled by default
-* #418 - Docker images lacks proper data management
-* #430 - Set correct paths for perl and nikto so that do-scan and nikto can now be run by any user
-* #445 - RPM errors
-* #457 - Mine attachment not sent correctly
-* #465 - JSON::false returns "false" on certain platforms
-* #466 - /api/version should not be an authenticated call
+* #132 - We have CSRF protection now. Non-get requests should have content-type application/json.
+* #461 - Update button on finding edit screen isn't working properly
+* #474 - Some typo/style fixes by Jericho (attrition.org)
+* #478 - Conralive should check if cron isn't ignored
+* #480 - Editing/showing notifications broken
+* #483 - add_user broken
+* #484 - Failure to update 1+n scan configuration in Manage Scans (And all other update funtions)
 },
 "https://github.com/schubergphilis/Seccubus/releases/latest",""];
 	} elsif ( $version eq $beta ) {
