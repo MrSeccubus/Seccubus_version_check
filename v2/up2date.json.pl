@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.36";
-my $beta = "2.37";
-my $cool = "2.38";
+my $current = "2.38";
+my $beta = "2.39";
+my $cool = "2.40";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -45,43 +45,29 @@ if ( ! $version ) {
 
 Release notes
 
-29-6-2017 - v2.36 - TestSSL.sh release
-======================================
+2-8-2017 - v2.38 - Various fixes and improvements
+=================================================
 
-This release has been in the making for a long time. In fact the first pull
-request for it's main feature was back in June 2016 by our friend and then
-colleague Glenn ten Cate.
-
-This release marks the integration of Dirk Wetter's excellent tool testssl.sh
-into Seccubus. With testssl.sh you can get a detailed overview of how well
-your TLS enabled service is set up. Not just for websites, but for any TCP
-service, even those that use STARTTLS.
-
-In addition we introduced the --cdn switch for ssllabs, to reduce noise for
-CDN enabled sites, we the ability to dynamically create users via JIT
-provisionsing and we added CSRF protection for enhanced security.
-
-To boost future code quality, Perl::Critic testing has been integrated in the
-unit testing process.
-
-Besides that we squased some bugs, five of which got introduced in the previous release :(
+We've fixed various bug and implemented some enhancements in this version.
 
 Enhancements
 ------------
-#302 - Testssl.sh support for Seccubus
-#401 - JIT provisioning of users
-#442 - Add --cdn option to ssllabs
-* Perl Critic is now part of unit testing. All critique was handled
+* #421 - Implemented a scoring system for SSLlabs findings
+* #464 - Scan objects in Nessus are now reused in stead of created from scratch
+* #500 - Added --cdn switch to testssl.sh too
+* #504 - Changed container crontab shell for sh to bash
+* #506 - Allow cron email to be sent externally
+* #512 - New ssllabs finding httpForwarding
+* #522 - You can now configure which formats get exported from nessus
 
 Bug Fixes
----------
-* #132 - We have CSRF protection now. Non-get requests should have content-type application/json.
-* #461 - Update button on finding edit screen isn't working properly
-* #474 - Some typo/style fixes by Jericho (attrition.org)
-* #478 - Conralive should check if cron isn't ignored
-* #480 - Editing/showing notifications broken
-* #483 - add_user broken
-* #484 - Failure to update 1+n scan configuration in Manage Scans (And all other update funtions)
+* #490 - --cdn switch doesn't work as expected
+* #491 - Help message of load_ivil didn't align nicely
+* #492 - Finding history wasn't showing in the GUI
+* #494 - Prototype mismatch warning in Nessus scanner
+* #502 - Incorrect path set when using CRON in a container
+* #507 - It is not longer possible to add duplicate users
+* #522 - Nessus scans now get correctly recycled or created
 },
 "https://github.com/schubergphilis/Seccubus/releases/latest",""];
 	} elsif ( $version eq $beta ) {
