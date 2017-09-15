@@ -11,9 +11,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.38";
-my $beta = "2.39";
-my $cool = "2.40";
+my $current = "2.40";
+my $beta = "2.41";
+my $cool = "2.42";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -45,29 +45,32 @@ if ( ! $version ) {
 
 Release notes
 
-2-8-2017 - v2.38 - Various fixes and improvements
-=================================================
+15-9-2017 - v2.40 - Fixes and improvements
+==========================================
 
-We've fixed various bug and implemented some enhancements in this version.
+This release mainly fixes installation issues on Debian and issue in docker that are due to the PERL5LIB path
+that doesn't include the current directory anymore.
+It also fixes the issue where people were unable to connect to a Nessus instance with a self signed certificate
+that was trigged by altered behaviour of a perl library.
+I've also fixed and tweaked the user interface a bit.
+
 
 Enhancements
 ------------
-* #421 - Implemented a scoring system for SSLlabs findings
-* #464 - Scan objects in Nessus are now reused in stead of created from scratch
-* #500 - Added --cdn switch to testssl.sh too
-* #504 - Changed container crontab shell for sh to bash
-* #506 - Allow cron email to be sent externally
-* #512 - New ssllabs finding httpForwarding
-* #522 - You can now configure which formats get exported from nessus
+# #539 - Status tab will become the default instead of the login tab if there is a config issue
+
 
 Bug Fixes
-* #490 - --cdn switch doesn't work as expected
-* #491 - Help message of load_ivil didn't align nicely
-* #492 - Finding history wasn't showing in the GUI
-* #494 - Prototype mismatch warning in Nessus scanner
-* #502 - Incorrect path set when using CRON in a container
-* #507 - It is not longer possible to add duplicate users
-* #522 - Nessus scans now get correctly recycled or created
+---------
+* #499 - Status change buttons in findings grid not working
+* #529 - No all buttons were working correctly when working with linked issues
+* #536 - Seccubus did not install on debian because openssl passphrase was too short (also effected docker container)
+* #534 - Fixed an error that prevented connections to a Nessus instance with a self signed certificate on certain OSes
+* #542 - Docker broken
+* #548 - Notifications editor did not work correctly
+* #549 - Deleting notifications did not work correctly
+* #559 - PERL5LIB path was not set in cron container
+* #563 - Removed some dedug output
 },
 "https://github.com/schubergphilis/Seccubus/releases/latest",""];
 	} elsif ( $version eq $beta ) {
