@@ -7,9 +7,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.42";
-my $beta = "2.43";
-my $cool = "2.44";
+my $current = "2.44";
+my $beta = "2.45";
+my $cool = "2.46";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -41,42 +41,29 @@ if ( ! $version ) {
 
 Release notes
 
-20-10-2017 - v2.42 - Kali, Certificate validation and State Engine
-==================================================================
-Three major improvements in this release:
+15-11-2017 - v2.44 - PackageCloud release
+=========================================
+This release cleans up technical debt. Package building has been moved from OpenSuse Build Services to CicleCI
+and packages now automatically are uploade to [our PackageCloud repositories](https://packagecloud.io/seccubus/).
+Here you will find two repositories:
+* [Latest](https://packagecloud.io/seccubus/latest) - Follows the latest code that gets merged into the master branch
+* [Releases](https://packagecloud.io/seccubus/releases) - Follows the regular releases
 
-* It fixes a big issue with the validation of SSL certificates. Certificate validation was cot correctly turned off in the Nessus scanner when an internal scanner is used
-* Debian packages now work on Debian, Ubuntu and Kali
-* The state engine still had a bug when findings needed to recover from the Gone status
-
+You can configure these repositories on your operating system to include Seccubus upgrades in your regular package updates.
 
 Enhancements
 ------------
-* Unit testing moved from Circle CI v1.0 to CircleCI v2.0 to increase testing speed
-* Now also building .deb file on Circle CI and testing them against debian v8 and v9, Ubuntu and Kali Linux
+* #597 - do-scan and import ivil now log to syslog
+* #605 - Container scan command allows scans to only starts on a certain weekday
+* Fedora, Ubuntu and Debian package building has been moved to CircleCI
+* Packages are automatically uploaded to [packagecloud.io](https://packagecloud.io/seccubus/)
 
 
 Bug Fixes
 ---------
-* #580 - --cdn option did not add IPs to finding if findings were not consitent across endpoints
-* #572 - Issues with disabling SSL verification in Nessus
-* #571 - @SHoekstra fixed: testssl scan fails on docker because hexdump is not installed
-* #563 - Fixed an issue with picking the wrong color for notes (Severity 4)
-* #533 - Installation of .deb package on Kali failed (Thanks @rhertzog)
-* #509 - Fixed a bug in the state engine, causing incorrect recovery from gone when an issue was previously closed
-* Fixed an issue where duplicate asset_hosts were created on certain platforms (e.g. docker)
-* Fixed an issue in how filters were composed if
-* Removed debug output from entrypoint.sh
-* Fixed git complaining about unrelated histories
+* #593 - Fixed incorrect parsing of the values for poodleTls finding in SSLlabs.
+* #595 - Fixed incorrect parsing of the values for Ticketbleed finding in SSLlabs.
 
-15-9-2017 - v2.40 - Fixes and improvements
-==========================================
-
-This release mainly fixes installation issues on Debian and issue in docker that are due to the PERL5LIB path
-that doesn't include the current directory anymore.
-It also fixes the issue where people were unable to connect to a Nessus instance with a self signed certificate
-that was trigged by altered behaviour of a perl library.
-I've also fixed and tweaked the user interface a bit.
 },
 "https://github.com/schubergphilis/Seccubus/releases/latest",""];
 	} elsif ( $version eq $beta ) {
