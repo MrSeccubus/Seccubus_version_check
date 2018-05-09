@@ -7,9 +7,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.46";
-my $beta = "2.47";
-my $cool = "2.48";
+my $current = "2.48";
+my $beta = "2.49";
+my $cool = "2.50";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -41,25 +41,25 @@ if ( ! $version ) {
 
 Release notes
 
-14-12-2017 - v2.46 - RedHat 7 / Centos 7 packages
-=================================================
-This release adds RPM support for RedHat 7 and CentOS 7. Because Mojolicious and some of its dependancies were not available
-as RPM on any of the standard repos for el7 we are also buildign these RPMs as part of our el7 build street now and are
-pushing these packages to our [packagecloud.io](https://packagecloud.io/seccubus) repository. This makes tweaks like [this one](https://t.co/svO7z1RiRb) by @Ar0xA unneccasary.
+9-5-2018 - v2.48 - Tenable.io compatibility and more
+====================================================
+This release is fully compatible with the Tenable.io vulnerability management platform.
+
+Differences with 2.46
 
 Enhancements
 ------------
-* Added support for RedHat 7 / CentOS 7 RPM packages. With the extra needed packages being added to packagecloud.io
+* Seccubus now support Tenable.io as a scanning platform
+* Added parsing of the ROBOT (bleichenbacher) attack to the SSLlabs scanner
+* Added a dev environment example config
+* Increased the size of the scannerparam field in the database
 
 Bug Fixes
 ---------
-* #588 - Fix Nmap Plugin ID leak (Thanks @alirezakv)
-* #589 - Fix OpenVAS scan execution bug with only 1 target defined (Thanks @alirezakv)
-* #603 - Nessus scan fails when pdf files cannot be exported (Thanks @Ar0xA)
-* #615 - Docker: when the database was on the data volume the database failed to start
-* #617 - Nikto scanner gives unintended error output
-* Theodoor Scholte fixed some typos in the scanner scripts (Thanks!)
-* Streamlined CircleCI unit testing
+* #635 - Hypnotoad path was set incorrectly in systemd startup script on CentOS 7
+* #642 - Updated readme to address how to run a scan on a running container
+* Fixed an error in the Docker examples in README.md
+* Added zip to the docker image because it is needed for import/export
 
 
 },
