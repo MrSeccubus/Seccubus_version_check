@@ -41,26 +41,27 @@ if ( ! $version ) {
 
 Release notes
 
-9-5-2018 - v2.48 - Tenable.io compatibility and more
-====================================================
-This release is fully compatible with the Tenable.io vulnerability management platform.
+95-11-2018 - v2.50 - Seccubus Alpine
+===================================
+This release brings new Alpine based docker containers and fixes a compatibility issue with MySQL/MariaDB version 8 and above.
 
-Differences with 2.46
+Differences with 2.48
 
 Enhancements
 ------------
-* Seccubus now support Tenable.io as a scanning platform
-* Added parsing of the ROBOT (bleichenbacher) attack to the SSLlabs scanner
-* Added a dev environment example config
-* Increased the size of the scannerparam field in the database
+* Seccubus containers are now built based on Alpine
+* Minimal specialized docker containers available for front end, api, front end+api, perl and cron
 
 Bug Fixes
 ---------
-* #635 - Hypnotoad path was set incorrectly in systemd startup script on CentOS 7
-* #642 - Updated readme to address how to run a scan on a running container
-* Fixed an error in the Docker examples in README.md
-* Added zip to the docker image because it is needed for import/export
-
+* Seccubus rpm's are now also being built for Fedora version 27 and 28
+* RPMs for Fedora version 25 depricated
+* Fixed building of supporting Centos v7 rpms
+* #585 - Added default credentials to the readme file
+* #660 - Sudo added to docker images
+* #655 - Shell set to /bin/bash for user seccubus
+* #662 - Fixing documentation typos
+* #673 - PERL5LIB set to /opt/seccubus for seccubus user via debian package
 
 },
 "https://github.com/schubergphilis/Seccubus/releases/latest",""];
