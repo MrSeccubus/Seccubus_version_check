@@ -7,9 +7,9 @@ use strict;
 use CGI;
 use JSON;
 
-my $current = "2.48";
-my $beta = "2.49";
-my $cool = "2.50";
+my $current = "2.52";
+my $beta = "2.53";
+my $cool = "2.54";
 my ( $one, $two, $three) = split /\./, $current;
 $three = 'ZZZ' unless $three;
 my $data = [];
@@ -37,32 +37,8 @@ if ( ! $version ) {
 	} elsif ( $version == $current ) {
 		$data = [ "OK", "Your version $r_version is up to date",""];
 	} elsif ( $minor < $two || ($minor == $two && $revision < $three) ) {
-		$data = [ "Error","Version $current is available, please upgrade..." . q{
-
-Release notes
-
-95-11-2018 - v2.50 - Seccubus Alpine
-===================================
-This release brings new Alpine based docker containers and fixes a compatibility issue with MySQL/MariaDB version 8 and above.
-
-Differences with 2.48
-
-Enhancements
-------------
-* Seccubus containers are now built based on Alpine
-* Minimal specialized docker containers available for front end, api, front end+api, perl and cron
-
-Bug Fixes
----------
-* Seccubus rpm's are now also being built for Fedora version 27 and 28
-* RPMs for Fedora version 25 depricated
-* Fixed building of supporting Centos v7 rpms
-* #585 - Added default credentials to the readme file
-* #660 - Sudo added to docker images
-* #655 - Shell set to /bin/bash for user seccubus
-* #662 - Fixing documentation typos
-* #673 - PERL5LIB set to /opt/seccubus for seccubus user via debian package
-
+		$data = [ "Error","A new is available, please upgrade..." . q{
+Please visit https://github.com/schubergphilis/Seccubus/releases/latest or https://packagecloud.io/seccubus
 },
 "https://github.com/schubergphilis/Seccubus/releases/latest",""];
 	} elsif ( $version eq $beta ) {
